@@ -1,0 +1,7 @@
+{
+  "name": "KoGenOne - KOMQ GEN AI One Platform",
+  "description": "A comprehensive dashboard for managing and sharing GEN AI assets (GPTs, GEMs, etc.) with advanced analytics, QR sharing, and Google Sheets synchronization.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
