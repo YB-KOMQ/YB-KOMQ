@@ -40,6 +40,44 @@ const STORAGE_KEY = "komq-genai-assets";
 const ADMIN_PASSWORD = "komq1234!!";
 const COLORS = ['#38bdf8', '#fbbf24', '#f87171', '#a78bfa', '#4ade80'];
 
+/**
+ * ✅ 수강생에게 기본으로 "처음부터" 보여줄 Seed 자산
+ * - 처음 접속(저장된 데이터 없음) 시 localStorage(STORAGE_KEY)에 자동 저장됨
+ * - 이후 관리자가 추가/삭제하면 그 브라우저에 유지됨
+ */
+const SEED_ASSETS: Asset[] = [
+  {
+    id: "seed-001",
+    name: "KoGenOne 메인 챗봇",
+    url: "https://여기에-네-챗봇-링크",
+    type: "GPTs",
+    team: "교육",
+    security: "Public",
+    tags: ["KoGenOne", "챗봇", "교육"],
+    createdAt: "2026-01-01T00:00:00.000Z"
+  },
+  {
+    id: "seed-002",
+    name: "실습 안내 페이지",
+    url: "https://여기에-안내페이지-링크",
+    type: "External",
+    team: "교육",
+    security: "Public",
+    tags: ["실습", "가이드"],
+    createdAt: "2026-01-01T00:00:00.000Z"
+  },
+  {
+    id: "seed-003",
+    name: "추가 자료 링크",
+    url: "https://여기에-추가자료-링크",
+    type: "External",
+    team: "교육",
+    security: "Public",
+    tags: ["자료", "링크"],
+    createdAt: "2026-01-01T00:00:00.000Z"
+  }
+];
+
 const App: React.FC = () => {
   // --- State ---
   const [assets, setAssets] = useState<Asset[]>([]);
@@ -84,6 +122,7 @@ const App: React.FC = () => {
     // Check URL for share payload
     const params = new URLSearchParams(window.location.search);
     const shareData = params.get('share');
+
     if (shareData) {
       try {
         const decoded = JSON.parse(decodeURIComponent(atob(shareData)));
@@ -97,7 +136,14 @@ const App: React.FC = () => {
       }
     } else {
       const stored = localStorage.getItem(STORAGE_KEY);
-      if (stored) setAssets(JSON.parse(stored));
+
+      // ✅ 처음 접속(저장된 데이터 없음) = Seed로 자동 초기화
+      if (!stored) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(SEED_ASSETS));
+        setAssets(SEED_ASSETS);
+      } else {
+        setAssets(JSON.parse(stored));
+      }
     }
 
     const storedGs = localStorage.getItem('komq-gs-config');
