@@ -37,7 +37,7 @@ import { Asset, User, ViewType, USERS, AssetType, SecurityLevel, Team } from './
 import { geminiService } from './geminiService';
 
 const STORAGE_KEY = "komq-genai-assets";
-const ADMIN_PASSWORD = "komq5522!!";
+const ADMIN_PASSWORD = "komq1234!!";
 const COLORS = ['#38bdf8', '#fbbf24', '#f87171', '#a78bfa', '#4ade80'];
 
 const App: React.FC = () => {
