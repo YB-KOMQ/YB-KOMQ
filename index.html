@@ -5,13 +5,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>KoGenOne - KOMQ GEN AI Platform</title>
+
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Google Font -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  >
+
   <style>
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background-color: #0f172a;
       color: #e5e7eb;
+      margin: 0;
     }
     ::-webkit-scrollbar {
       width: 8px;
@@ -27,21 +36,26 @@
       background: #475569;
     }
   </style>
-<script type="importmap">
-{
-  "imports": {
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
-    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
-    "recharts": "https://esm.sh/recharts@^3.6.0",
-    "qrcode.react": "https://esm.sh/qrcode.react@^4.2.0"
+
+  <!-- Import Map -->
+  <script type="importmap">
+  {
+    "imports": {
+      "react": "https://esm.sh/react@^19.2.3",
+      "react-dom/client": "https://esm.sh/react-dom@^19.2.3/client",
+      "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+      "recharts": "https://esm.sh/recharts@^3.6.0",
+      "qrcode.react": "https://esm.sh/qrcode.react@^4.2.0"
+    }
   }
-}
-</script>
+  </script>
 </head>
+
 <body>
+  <!-- React 앱이 마운트되는 곳 -->
   <div id="root"></div>
+
+  <!-- ⭐⭐⭐ 중요: React 앱 시작 스크립트 ⭐⭐⭐ -->
+  <script type="module" src="/src/main.tsx"></script>
 </body>
 </html>
